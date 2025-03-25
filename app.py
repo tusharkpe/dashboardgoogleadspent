@@ -62,7 +62,8 @@ else:
     # Remove 'Country' column if it exists
     if 'Country' in data_grouped.columns:
         data_grouped = data_grouped.drop(columns=['Country'])
-    
+    columns_to_remove = ['Country', 'Ad Exchange revenue ($)']
+    data_grouped = data_grouped.drop(columns=[col for col in columns_to_remove if col in data_grouped.columns])
     # Display data
     st.write("### Filtered Data")
     st.dataframe(data_grouped)
